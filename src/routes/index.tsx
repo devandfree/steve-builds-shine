@@ -43,7 +43,7 @@ const tools = [
 const services = [
   { title: "SAAS PRODUCTS /\nMVP BUILD", tag: "MVP" },
   { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB" },
-  { title: "MOBILE APPS /\nPROTOTYPES", tag: "APP" },
+  
   { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND" },
   { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT" },
 ];
