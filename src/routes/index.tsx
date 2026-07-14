@@ -129,18 +129,9 @@ function Portfolio() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative order-1 mx-auto sm:order-2"
           >
-            <motion.img
-              src={steveAvatar}
-              alt="Steve, Product Builder"
-              width={420}
-              height={520}
-              className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
+            <div className="text-center">
               <p className="text-[10px] font-semibold tracking-[0.4em] text-primary">STEVE</p>
-              <h1 className="-mt-1 text-6xl font-black tracking-tighter sm:text-7xl">
+              <h1 className="-mt-1 text-7xl font-black tracking-tighter sm:text-8xl">
                 <span className="text-foreground">st</span>
                 <span className="text-foreground/40">eve</span>
               </h1>
