@@ -113,20 +113,32 @@ function Portfolio() {
 
         {/* Hero */}
         <section className="relative mt-10 grid gap-8 sm:mt-16 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-          <div className="order-2 sm:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-2 sm:order-1"
+          >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
               Product Builder<br />& Digital Craftsman
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="relative order-1 mx-auto sm:order-2">
-            <img
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative order-1 mx-auto sm:order-2"
+          >
+            <motion.img
               src={steveAvatar}
               alt="Steve, Product Builder"
               width={420}
               height={520}
               className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
               <p className="text-[10px] font-semibold tracking-[0.4em] text-primary">STEVE</p>
@@ -135,26 +147,45 @@ function Portfolio() {
                 <span className="text-foreground/40">eve</span>
               </h1>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
+          >
             <p>
               Hi, I&apos;m Steve, a product builder, designer and developer passionate
               about shipping result-driven products and giving your ideas an
               interesting story and shape.
             </p>
-          </div>
+          </motion.div>
         </section>
 
         {/* Tools */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-70">
-          {tools.map((t) => (
-            <div key={t.name} className="flex items-center gap-2 text-muted-foreground">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.7 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+        >
+          {tools.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              whileHover={{ scale: 1.15, color: "hsl(var(--primary))" }}
+              className="flex items-center gap-2 text-muted-foreground"
+            >
               <t.icon className="h-4 w-4" />
               <span className="text-xs font-medium">{t.name}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Statement */}
         <section className="mt-20">
