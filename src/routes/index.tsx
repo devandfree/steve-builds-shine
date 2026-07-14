@@ -59,18 +59,30 @@ const contacts = [
 
 function PillButton({ icon: Icon, label }: { icon: typeof Play; label: string }) {
   return (
-    <button className="group flex items-center gap-2 rounded-full border border-border bg-card/60 px-2 py-2 pr-5 text-sm font-medium text-foreground backdrop-blur transition-all hover:border-primary/50 hover:bg-card">
+    <motion.button
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      className="group flex items-center gap-2 rounded-full border border-border bg-card/60 px-2 py-2 pr-5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/50 hover:bg-card"
+    >
       <span className="grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground">
         <Icon className="h-3.5 w-3.5" strokeWidth={3} />
       </span>
       <span>{label}</span>
-    </button>
+    </motion.button>
   );
 }
 
-function ServiceCard({ title, tag }: { title: string; tag: string }) {
+function ServiceCard({ title, tag, index }: { title: string; tag: string; index: number }) {
   return (
-    <div className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-all hover:border-primary/40">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-colors hover:border-primary/40"
+    >
       <div className="grid h-14 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-[10px] font-black tracking-widest text-primary">
         {tag}
       </div>
@@ -82,7 +94,7 @@ function ServiceCard({ title, tag }: { title: string; tag: string }) {
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
         <ChevronRight className="h-4 w-4" strokeWidth={3} />
       </span>
-    </div>
+    </motion.div>
   );
 }
 
