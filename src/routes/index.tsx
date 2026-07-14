@@ -188,7 +188,13 @@ function Portfolio() {
         </motion.div>
 
         {/* Statement */}
-        <section className="mt-20">
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-20"
+        >
           <div className="mb-6 h-px w-16 bg-primary" />
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
             Building incredible, impactful, useful products,
@@ -204,20 +210,34 @@ function Portfolio() {
 
           {/* Logo strip */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-40">
-            {["◆ Loom", "▲ Vercel", "★ Stripe", "◉ Linear", "✦ Notion", "◈ Figma", "▼ Raycast", "● Arc"].map((l) => (
-              <span key={l} className="text-xs font-bold tracking-wider text-muted-foreground">
+            {["◆ Loom", "▲ Vercel", "★ Stripe", "◉ Linear", "✦ Notion", "◈ Figma", "▼ Raycast", "● Arc"].map((l, i) => (
+              <motion.span
+                key={l}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="text-xs font-bold tracking-wider text-muted-foreground"
+              >
                 {l}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* What I do */}
         <section className="mt-20">
-          <div className="mb-6 h-px w-16 bg-primary" />
-          <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
-            what I do
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-6 h-px w-16 bg-primary" />
+            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              what I do
+            </h2>
+          </motion.div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
@@ -227,23 +247,35 @@ function Portfolio() {
         </section>
 
         {/* Contact */}
-        <section className="mt-24 mb-10 text-center">
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 mb-10 text-center"
+        >
           <h2 className="text-2xl font-semibold">Contact me</h2>
           <div className="mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-border bg-card p-3">
-            {contacts.map((c) => (
-              <button
+            {contacts.map((c, i) => (
+              <motion.button
                 key={c.label}
                 aria-label={c.label}
-                className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-all hover:bg-primary hover:text-primary-foreground"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, type: "spring", stiffness: 260, damping: 20 }}
+                whileHover={{ scale: 1.15, rotate: -6 }}
+                whileTap={{ scale: 0.9 }}
+                className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <c.icon className="h-5 w-5" />
-              </button>
+              </motion.button>
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
             © {new Date().getFullYear()} Steve — Product Builder
           </p>
-        </section>
+        </motion.section>
       </div>
     </div>
   );
