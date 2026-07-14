@@ -189,8 +189,8 @@ function Portfolio() {
           </h2>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <ServiceCard key={s.tag} {...s} />
+            {services.map((s, i) => (
+              <ServiceCard key={s.tag} {...s} index={i} />
             ))}
           </div>
         </section>
