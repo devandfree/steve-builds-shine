@@ -14,12 +14,10 @@ import {
   Framer,
   Code2,
   Boxes,
-  Rocket,
   Database,
   Sparkles,
   ChevronRight,
 } from "lucide-react";
-import steveAvatar from "@/assets/steve-avatar.png";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
