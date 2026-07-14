@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
   Play,
   ShoppingBag,
@@ -42,9 +43,8 @@ const tools = [
 const services = [
   { title: "SAAS PRODUCTS /\nMVP BUILD", tag: "MVP" },
   { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB" },
-  { title: "MOBILE APPS /\nPROTOTYPES", tag: "APP" },
+  
   { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND" },
-  { title: "AI AGENTS /\nAUTOMATIONS", tag: "AI" },
   { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT" },
 ];
 
@@ -59,18 +59,30 @@ const contacts = [
 
 function PillButton({ icon: Icon, label }: { icon: typeof Play; label: string }) {
   return (
-    <button className="group flex items-center gap-2 rounded-full border border-border bg-card/60 px-2 py-2 pr-5 text-sm font-medium text-foreground backdrop-blur transition-all hover:border-primary/50 hover:bg-card">
+    <motion.button
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      className="group flex items-center gap-2 rounded-full border border-border bg-card/60 px-2 py-2 pr-5 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/50 hover:bg-card"
+    >
       <span className="grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground">
         <Icon className="h-3.5 w-3.5" strokeWidth={3} />
       </span>
       <span>{label}</span>
-    </button>
+    </motion.button>
   );
 }
 
-function ServiceCard({ title, tag }: { title: string; tag: string }) {
+function ServiceCard({ title, tag, index }: { title: string; tag: string; index: number }) {
   return (
-    <div className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-all hover:border-primary/40">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-colors hover:border-primary/40"
+    >
       <div className="grid h-14 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-[10px] font-black tracking-widest text-primary">
         {tag}
       </div>
@@ -82,7 +94,7 @@ function ServiceCard({ title, tag }: { title: string; tag: string }) {
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
         <ChevronRight className="h-4 w-4" strokeWidth={3} />
       </span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -101,20 +113,32 @@ function Portfolio() {
 
         {/* Hero */}
         <section className="relative mt-10 grid gap-8 sm:mt-16 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-          <div className="order-2 sm:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-2 sm:order-1"
+          >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
               Product Builder<br />& Digital Craftsman
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="relative order-1 mx-auto sm:order-2">
-            <img
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative order-1 mx-auto sm:order-2"
+          >
+            <motion.img
               src={steveAvatar}
               alt="Steve, Product Builder"
               width={420}
               height={520}
               className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
               <p className="text-[10px] font-semibold tracking-[0.4em] text-primary">STEVE</p>
@@ -123,29 +147,54 @@ function Portfolio() {
                 <span className="text-foreground/40">eve</span>
               </h1>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
+          >
             <p>
               Hi, I&apos;m Steve, a product builder, designer and developer passionate
               about shipping result-driven products and giving your ideas an
               interesting story and shape.
             </p>
-          </div>
+          </motion.div>
         </section>
 
         {/* Tools */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-70">
-          {tools.map((t) => (
-            <div key={t.name} className="flex items-center gap-2 text-muted-foreground">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.7 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+        >
+          {tools.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              whileHover={{ scale: 1.15, color: "hsl(var(--primary))" }}
+              className="flex items-center gap-2 text-muted-foreground"
+            >
               <t.icon className="h-4 w-4" />
               <span className="text-xs font-medium">{t.name}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Statement */}
-        <section className="mt-20">
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-20"
+        >
           <div className="mb-6 h-px w-16 bg-primary" />
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
             Building incredible, impactful, useful products,
@@ -161,46 +210,72 @@ function Portfolio() {
 
           {/* Logo strip */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-40">
-            {["◆ Loom", "▲ Vercel", "★ Stripe", "◉ Linear", "✦ Notion", "◈ Figma", "▼ Raycast", "● Arc"].map((l) => (
-              <span key={l} className="text-xs font-bold tracking-wider text-muted-foreground">
+            {["◆ Loom", "▲ Vercel", "★ Stripe", "◉ Linear", "✦ Notion", "◈ Figma", "▼ Raycast", "● Arc"].map((l, i) => (
+              <motion.span
+                key={l}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="text-xs font-bold tracking-wider text-muted-foreground"
+              >
                 {l}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* What I do */}
         <section className="mt-20">
-          <div className="mb-6 h-px w-16 bg-primary" />
-          <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
-            what I do
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-6 h-px w-16 bg-primary" />
+            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              what I do
+            </h2>
+          </motion.div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
-              <ServiceCard key={s.tag} {...s} />
+            {services.map((s, i) => (
+              <ServiceCard key={s.tag} {...s} index={i} />
             ))}
           </div>
         </section>
 
         {/* Contact */}
-        <section className="mt-24 mb-10 text-center">
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 mb-10 text-center"
+        >
           <h2 className="text-2xl font-semibold">Contact me</h2>
           <div className="mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-border bg-card p-3">
-            {contacts.map((c) => (
-              <button
+            {contacts.map((c, i) => (
+              <motion.button
                 key={c.label}
                 aria-label={c.label}
-                className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-all hover:bg-primary hover:text-primary-foreground"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, type: "spring", stiffness: 260, damping: 20 }}
+                whileHover={{ scale: 1.15, rotate: -6 }}
+                whileTap={{ scale: 0.9 }}
+                className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <c.icon className="h-5 w-5" />
-              </button>
+              </motion.button>
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
             © {new Date().getFullYear()} Steve — Product Builder
           </p>
-        </section>
+        </motion.section>
       </div>
     </div>
   );
