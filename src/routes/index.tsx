@@ -45,7 +45,6 @@ const services = [
   { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB" },
   { title: "MOBILE APPS /\nPROTOTYPES", tag: "APP" },
   { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND" },
-  { title: "AI AGENTS /\nAUTOMATIONS", tag: "AI" },
   { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT" },
 ];
 
