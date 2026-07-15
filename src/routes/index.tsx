@@ -19,7 +19,7 @@ import {
   Sparkles,
   ChevronRight,
 } from "lucide-react";
-import steveAvatar from "@/assets/steve-avatar.png";
+import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -132,7 +132,7 @@ function Portfolio() {
             className="relative order-1 mx-auto sm:order-2"
           >
             <motion.img
-              src={steveAvatar}
+              src={steveAvatar.url}
               alt="Steve, Product Builder"
               width={420}
               height={520}
