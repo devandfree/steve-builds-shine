@@ -132,7 +132,7 @@ function Portfolio() {
             className="relative order-1 mx-auto sm:order-2"
           >
             <motion.img
-              src={steveAvatar}
+              src={steveAvatar.url}
               alt="Steve, Product Builder"
               width={420}
               height={520}
