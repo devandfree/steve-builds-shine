@@ -19,7 +19,7 @@ import {
   Sparkles,
   ChevronRight,
 } from "lucide-react";
-import steveAvatar from "@/assets/steve-avatar.png";
+import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
