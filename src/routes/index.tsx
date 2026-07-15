@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Play,
@@ -25,12 +25,6 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const navLinks = [
-  { icon: Play, label: "See my work" },
-  { icon: ShoppingBag, label: "My products" },
-  { icon: CheckCircle2, label: "Book a call" },
-];
-
 const tools = [
   { icon: Figma, name: "Figma" },
   { icon: Framer, name: "Framer" },
@@ -41,25 +35,35 @@ const tools = [
 ];
 
 const services = [
-  { title: "SAAS PRODUCTS /\nMVP BUILD", tag: "MVP" },
-  { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB" },
-  
-  { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND" },
-  { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT" },
+  { title: "SAAS PRODUCTS /\nMVP BUILD", tag: "MVP", slug: "mvp" },
+  { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB", slug: "web" },
+  { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND", slug: "brand" },
+  { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT", slug: "strat" },
 ];
 
 const contacts = [
-  { icon: Mail, label: "Gmail" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: MessageCircle, label: "Whatsapp" },
-  { icon: Twitter, label: "X/Twitter" },
-  { icon: Linkedin, label: "LinkedIn" },
-  { icon: Github, label: "Github" },
+  { icon: Mail, label: "Gmail", href: "mailto:steve@example.com" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: MessageCircle, label: "Whatsapp", href: "https://wa.me/" },
+  { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+  { icon: Github, label: "Github", href: "https://github.com" },
 ];
 
-function PillButton({ icon: Icon, label }: { icon: typeof Play; label: string }) {
+const MotionLink = motion(Link);
+
+function PillButton({
+  icon: Icon,
+  label,
+  to,
+}: {
+  icon: typeof Play;
+  label: string;
+  to: "/work" | "/products" | "/book";
+}) {
   return (
-    <motion.button
+    <MotionLink
+      to={to}
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -69,13 +73,15 @@ function PillButton({ icon: Icon, label }: { icon: typeof Play; label: string })
         <Icon className="h-3.5 w-3.5" strokeWidth={3} />
       </span>
       <span>{label}</span>
-    </motion.button>
+    </MotionLink>
   );
 }
 
-function ServiceCard({ title, tag, index }: { title: string; tag: string; index: number }) {
+function ServiceCard({ title, tag, slug, index }: { title: string; tag: string; slug: string; index: number }) {
   return (
-    <motion.div
+    <MotionLink
+      to="/services/$slug"
+      params={{ slug }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -94,7 +100,7 @@ function ServiceCard({ title, tag, index }: { title: string; tag: string; index:
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
         <ChevronRight className="h-4 w-4" strokeWidth={3} />
       </span>
-    </motion.div>
+    </MotionLink>
   );
 }
 
@@ -104,11 +110,11 @@ function Portfolio() {
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-10">
         {/* Nav */}
         <nav className="grid grid-cols-2 items-center gap-3 sm:flex sm:justify-between">
-          <PillButton icon={Play} label="See my work" />
+          <PillButton icon={Play} label="See my work" to="/work" />
           <div className="hidden sm:block">
-            <PillButton icon={ShoppingBag} label="My products" />
+            <PillButton icon={ShoppingBag} label="My products" to="/products" />
           </div>
-          <PillButton icon={CheckCircle2} label="Book a call" />
+          <PillButton icon={CheckCircle2} label="Book a call" to="/book" />
         </nav>
 
         {/* Hero */}
@@ -257,8 +263,11 @@ function Portfolio() {
           <h2 className="text-2xl font-semibold">Contact me</h2>
           <div className="mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-border bg-card p-3">
             {contacts.map((c, i) => (
-              <motion.button
+              <motion.a
                 key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={c.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -269,7 +278,7 @@ function Portfolio() {
                 className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <c.icon className="h-5 w-5" />
-              </motion.button>
+              </motion.a>
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
