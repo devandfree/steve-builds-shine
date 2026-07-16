@@ -17,7 +17,10 @@ import {
   Zap,
   Rocket,
   ChevronRight,
+  Plus,
+  Minus,
 } from "lucide-react";
+import { useState } from "react";
 import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
