@@ -350,6 +350,37 @@ function Portfolio() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-6 h-px w-16 bg-primary" />
+            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              questions fréquentes
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Tout ce que vous devez savoir sur mes sites web, micro-SaaS et agents IA.
+            </p>
+          </motion.div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {faqs.map((faq, i) => (
+              <FAQItem
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              />
+            ))}
+          </div>
+        </section>
+
         {/* Contact */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
