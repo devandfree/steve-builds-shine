@@ -147,7 +147,62 @@ function ServiceCard({ title, tag, slug, index }: { title: string; tag: string; 
   );
 }
 
+function FAQItem({
+  question,
+  answer,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+      className="overflow-hidden rounded-2xl border border-border bg-card"
+    >
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/50"
+        aria-expanded={isOpen}
+      >
+        <span className="text-sm font-semibold text-foreground">{question}</span>
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+          {isOpen ? (
+            <Minus className="h-3.5 w-3.5" strokeWidth={3} />
+          ) : (
+            <Plus className="h-3.5 w-3.5" strokeWidth={3} />
+          )}
+        </span>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? "auto" : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="overflow-hidden"
+      >
+        <div className="px-5 pb-5">
+          <p className="text-sm leading-relaxed text-muted-foreground">{answer}</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function Portfolio() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-10">
