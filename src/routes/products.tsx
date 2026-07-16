@@ -6,28 +6,28 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "My Products — Steve, Product Builder" },
-      { name: "description", content: "Templates, kits and digital products by Steve." },
-      { property: "og:title", content: "My Products — Steve" },
-      { property: "og:description", content: "Templates, kits and digital products by Steve." },
+      { title: "Mes produits — Steve" },
+      { name: "description", content: "Templates de sites, boilerplates micro-SaaS et agents IA prêts à l'emploi." },
+      { property: "og:title", content: "Mes produits — Steve" },
+      { property: "og:description", content: "Templates de sites, boilerplates micro-SaaS et agents IA prêts à l'emploi." },
     ],
   }),
   component: Products,
 });
 
 const products = [
-  { name: "Framer Portfolio Kit", price: "$49", desc: "The exact template I use to ship portfolios in a day." },
-  { name: "SaaS Landing Pack", price: "$79", desc: "8 conversion-ready landing sections for early SaaS." },
-  { name: "Notion Ops OS", price: "$29", desc: "The Notion system I use to run my solo studio." },
-  { name: "Brand Starter", price: "$39", desc: "Logo, color and type foundations for indie founders." },
+  { name: "Landing Kit Pro", price: "49 €", desc: "8 sections de landing page prêtes à convertir, éditables sans coder." },
+  { name: "Micro-SaaS Starter", price: "99 €", desc: "Boilerplate Next.js + Supabase + Stripe pour lancer un SaaS en un week-end." },
+  { name: "AI Agent Template", price: "79 €", desc: "Squelette d'agent IA avec RAG, outils et interface chat, prêt à brancher sur vos données." },
+  { name: "Automation Pack", price: "39 €", desc: "10 workflows n8n prêts à l'emploi : leads, emails, CRM, notifications." },
 ];
 
 function Products() {
   return (
     <PageShell
-      eyebrow="DIGITAL PRODUCTS"
-      title="My products"
-      intro="Templates, systems and kits — everything I've extracted from my own studio."
+      eyebrow="PRODUITS NUMÉRIQUES"
+      title="Mes produits"
+      intro="Templates et boilerplates pour lancer votre site, votre micro-SaaS ou votre agent IA en quelques heures."
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {products.map((p, i) => (
@@ -48,7 +48,7 @@ function Products() {
             <div className="mt-4 flex items-center justify-between">
               <span className="text-lg font-black text-primary">{p.price}</span>
               <span className="text-xs font-semibold text-muted-foreground transition-colors group-hover:text-foreground">
-                Get it →
+                Je le veux →
               </span>
             </div>
           </motion.a>

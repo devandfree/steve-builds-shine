@@ -6,29 +6,30 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "My Work — Steve, Product Builder" },
-      { name: "description", content: "A selection of products, MVPs and digital experiences crafted by Steve." },
-      { property: "og:title", content: "My Work — Steve" },
-      { property: "og:description", content: "A selection of products, MVPs and digital experiences crafted by Steve." },
+      { title: "Mes projets — Steve" },
+      { name: "description", content: "Sites web, micro-SaaS et agents IA livrés par Steve." },
+      { property: "og:title", content: "Mes projets — Steve" },
+      { property: "og:description", content: "Sites web, micro-SaaS et agents IA livrés par Steve." },
     ],
   }),
   component: Work,
 });
 
 const projects = [
-  { name: "Northlight SaaS", tag: "SAAS", year: "2025", desc: "Analytics platform for creators. From 0 to first 500 users in 8 weeks." },
-  { name: "Fold Studio", tag: "BRAND", year: "2025", desc: "Full identity and marketing site for a design studio." },
-  { name: "Kaya AI", tag: "MVP", year: "2024", desc: "AI writing assistant. Shipped MVP + waitlist in 3 weeks." },
-  { name: "Ember Landing", tag: "WEB", year: "2024", desc: "High-converting landing page for a Series A fintech." },
-  { name: "Lumen Notes", tag: "MVP", year: "2024", desc: "Minimal note-taking app with local-first sync." },
+  { name: "Northlight Analytics", tag: "SAAS", year: "2025", desc: "Micro-SaaS d'analytics pour créateurs. 0 → 500 utilisateurs payants en 8 semaines." },
+  { name: "Kaya Support AI", tag: "IA", year: "2025", desc: "Agent IA qui répond aux emails support 24/7. -70% de temps de traitement." },
+  { name: "Ember Landing", tag: "WEB", year: "2025", desc: "Landing page pour une fintech Série A. +38% de conversion vs l'ancienne version." },
+  { name: "Fold Studio", tag: "WEB", year: "2024", desc: "Site vitrine pour un studio créatif, livré en 5 jours." },
+  { name: "Lumen Notes", tag: "SAAS", year: "2024", desc: "Micro-SaaS de prise de notes local-first. Stripe + Supabase." },
+  { name: "AutoLeads", tag: "IA", year: "2024", desc: "Agent IA de qualification de leads B2B branché sur HubSpot." },
 ];
 
 function Work() {
   return (
     <PageShell
-      eyebrow="SELECTED WORK"
-      title="See my work"
-      intro="A few products I've designed, built and shipped in the last months."
+      eyebrow="PROJETS SÉLECTIONNÉS"
+      title="Mes projets"
+      intro="Quelques sites, micro-SaaS et agents IA que j'ai conçus, développés et mis en ligne récemment."
     >
       <div className="space-y-3">
         {projects.map((p, i) => (
@@ -57,12 +58,12 @@ function Work() {
       </div>
 
       <div className="mt-12 rounded-2xl border border-border bg-card/50 p-6 text-center">
-        <p className="text-sm text-muted-foreground">Want to see more or build together?</p>
+        <p className="text-sm text-muted-foreground">Envie de construire quelque chose ensemble ?</p>
         <Link
           to="/book"
           className="mt-3 inline-block rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
         >
-          Book a call →
+          Réserver un appel →
         </Link>
       </div>
     </PageShell>

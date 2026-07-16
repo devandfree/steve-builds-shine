@@ -10,13 +10,12 @@ import {
   Twitter,
   Linkedin,
   Github,
-  Figma,
-  Framer,
   Code2,
-  Boxes,
-  Rocket,
   Database,
   Sparkles,
+  Bot,
+  Zap,
+  Rocket,
   ChevronRight,
 } from "lucide-react";
 import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
@@ -26,23 +25,23 @@ export const Route = createFileRoute("/")({
 });
 
 const tools = [
-  { icon: Figma, name: "Figma" },
-  { icon: Framer, name: "Framer" },
-  { icon: Code2, name: "Cursor" },
-  { icon: Boxes, name: "Notion" },
+  { icon: Code2, name: "Lovable" },
+  { icon: Rocket, name: "Next.js" },
   { icon: Database, name: "Supabase" },
-  { icon: Sparkles, name: "AI+" },
+  { icon: Bot, name: "OpenAI" },
+  { icon: Zap, name: "n8n" },
+  { icon: Sparkles, name: "Claude" },
 ];
 
 const services = [
-  { title: "SAAS PRODUCTS /\nMVP BUILD", tag: "MVP", slug: "mvp" },
-  { title: "LANDING PAGES /\nWEB DESIGN", tag: "WEB", slug: "web" },
-  { title: "BRAND IDENTITY /\nDESIGN SYSTEMS", tag: "BRAND", slug: "brand" },
-  { title: "PRODUCT STRATEGY /\nCONSULTING", tag: "STRAT", slug: "strat" },
+  { title: "SITES WEB /\nLANDING PAGES", tag: "WEB", slug: "web" },
+  { title: "MICRO-SAAS /\nMVP BUILD", tag: "SAAS", slug: "saas" },
+  { title: "AGENTS IA /\nAUTOMATISATIONS", tag: "IA", slug: "ai" },
+  { title: "CONSEIL /\nPRODUCT STRATEGY", tag: "CONSEIL", slug: "strat" },
 ];
 
 const contacts = [
-  { icon: Mail, label: "Gmail", href: "mailto:steve@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:steve@example.com" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
   { icon: MessageCircle, label: "Whatsapp", href: "https://wa.me/" },
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
@@ -113,11 +112,11 @@ function Portfolio() {
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-10">
         {/* Nav */}
         <nav className="grid grid-cols-2 items-center gap-3 sm:flex sm:justify-between">
-          <PillButton icon={Play} label="See my work" to="/work" />
+          <PillButton icon={Play} label="Mes projets" to="/work" />
           <div className="hidden sm:block">
-            <PillButton icon={ShoppingBag} label="My products" to="/products" />
+            <PillButton icon={ShoppingBag} label="Mes produits" to="/products" />
           </div>
-          <PillButton icon={CheckCircle2} label="Book a call" to="/book" />
+          <PillButton icon={CheckCircle2} label="Réserver un appel" to="/book" />
         </nav>
 
         {/* Hero */}
@@ -130,7 +129,7 @@ function Portfolio() {
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
-              Product Builder<br />& Digital Craftsman
+              Sites web, Micro-SaaS<br />& Agents IA
             </h2>
           </motion.div>
 
@@ -165,9 +164,9 @@ function Portfolio() {
             className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
           >
             <p>
-              Hi, I&apos;m Steve, a product builder, designer and developer passionate
-              about shipping result-driven products and giving your ideas an
-              interesting story and shape.
+              Salut, moi c&apos;est Steve. Je conçois et je développe des sites web,
+              des micro-SaaS et des agents IA pour transformer vos idées en produits
+              qui rapportent — vite et sans friction.
             </p>
           </motion.div>
         </section>
@@ -206,20 +205,20 @@ function Portfolio() {
         >
           <div className="mb-6 h-px w-16 bg-primary" />
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Building incredible, impactful, useful products,
+            Je construis des produits web utiles,
             <br className="hidden sm:block" />
-            digital experiences and many more…
+            rapides et rentables — pas des maquettes.
           </h2>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Product is not just about pixels, code, features or launches — it&apos;s a way
-            of telling a story, solving real problems and shipping solutions to those
-            who need them. Building and crafting memorable products is what I do very
-            well…
+            Je ne suis pas designer, je suis builder. Mon truc c&apos;est de passer
+            de l&apos;idée au produit en ligne : un site qui convertit, un micro-SaaS
+            qui trouve ses premiers clients, ou un agent IA qui automatise ce qui
+            vous prend trop de temps.
           </p>
 
           {/* Logo strip */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-40">
-            {["◆ Loom", "▲ Vercel", "★ Stripe", "◉ Linear", "✦ Notion", "◈ Figma", "▼ Raycast", "● Arc"].map((l, i) => (
+            {["◆ Lovable", "▲ Vercel", "★ Stripe", "◉ Supabase", "✦ OpenAI", "◈ Claude", "▼ n8n", "● Resend"].map((l, i) => (
               <motion.span
                 key={l}
                 initial={{ opacity: 0, y: 10 }}
@@ -244,7 +243,7 @@ function Portfolio() {
           >
             <div className="mb-6 h-px w-16 bg-primary" />
             <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
-              what I do
+              ce que je fais
             </h2>
           </motion.div>
 
@@ -263,7 +262,7 @@ function Portfolio() {
           transition={{ duration: 0.6 }}
           className="mt-24 mb-10 text-center"
         >
-          <h2 className="text-2xl font-semibold">Contact me</h2>
+          <h2 className="text-2xl font-semibold">Me contacter</h2>
           <div className="mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-border bg-card p-3">
             {contacts.map((c, i) => (
               <motion.a
@@ -285,7 +284,7 @@ function Portfolio() {
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Steve — Product Builder
+            © {new Date().getFullYear()} Steve — Sites web, Micro-SaaS & Agents IA
           </p>
         </motion.section>
       </div>
