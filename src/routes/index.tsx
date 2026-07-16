@@ -17,7 +17,10 @@ import {
   Zap,
   Rocket,
   ChevronRight,
+  Plus,
+  Minus,
 } from "lucide-react";
+import { useState } from "react";
 import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -47,6 +50,44 @@ const contacts = [
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Github, label: "Github", href: "https://github.com" },
+];
+
+const faqs = [
+  {
+    question: "Quel type de site web peux-tu créer ?",
+    answer:
+      "Sites vitrines, landing pages, portfolios, blogs et sites orientés conversion. Chaque site est pensé pour être rapide, responsive, SEO-friendly et conçu pour convertir vos visiteurs en clients.",
+  },
+  {
+    question: "Qu'est-ce qu'un micro-SaaS et comment ça se lance ?",
+    answer:
+      "Un micro-SaaS est un petit logiciel en ligne qui résout un problème précis pour une cible bien définie. Je m'occupe du cadrage produit, du design, du développement full-stack (auth, base de données, paiements Stripe) et du déploiement.",
+  },
+  {
+    question: "Qu'est-ce qu'un agent IA et comment peut-il m'aider ?",
+    answer:
+      "Un agent IA est un assistant automatisé qui effectue des tâches répétitives à votre place : répondre au support, qualifier des leads, rédiger du contenu, synchroniser des données entre vos outils. Je le connecte à vos outils existants (Slack, Notion, Gmail, HubSpot, etc.) via des workflows n8n ou Make.",
+  },
+  {
+    question: "Quel est le délai pour livrer un site web ?",
+    answer:
+      "Un site vitrine ou une landing page simple se livre généralement en 1 à 3 semaines. Les projets plus complexes (micro-SaaS ou agents IA multi-étapes) demandent entre 2 et 8 semaines selon le périmètre.",
+  },
+  {
+    question: "Quels outils et technologies utilises-tu ?",
+    answer:
+      "Je travaille principalement avec Lovable, Next.js, Supabase, Stripe, OpenAI, Claude, n8n et Resend. Cette stack me permet de livrer vite, de manière fiable et scalable.",
+  },
+  {
+    question: "Comment se déroule un projet avec toi ?",
+    answer:
+      "On démarre par un appel de cadrage gratuit pour bien comprendre votre besoin. Ensuite je propose un plan, un devis et un délai. Durant le projet, je fais des points réguliers et vous livre une version testable avant la mise en ligne.",
+  },
+  {
+    question: "Combien coûte un projet type ?",
+    answer:
+      "Les sites web commencent à 1 500 €, les agents IA à 2 500 € et les micro-SaaS à 4 500 €. Le conseil produit est proposé à partir de 1 200 € par mois. Chaque devis est ajusté en fonction du périmètre exact.",
+  },
 ];
 
 const MotionLink = motion(Link);
@@ -106,7 +147,62 @@ function ServiceCard({ title, tag, slug, index }: { title: string; tag: string; 
   );
 }
 
+function FAQItem({
+  question,
+  answer,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+      className="overflow-hidden rounded-2xl border border-border bg-card"
+    >
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/50"
+        aria-expanded={isOpen}
+      >
+        <span className="text-sm font-semibold text-foreground">{question}</span>
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+          {isOpen ? (
+            <Minus className="h-3.5 w-3.5" strokeWidth={3} />
+          ) : (
+            <Plus className="h-3.5 w-3.5" strokeWidth={3} />
+          )}
+        </span>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? "auto" : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="overflow-hidden"
+      >
+        <div className="px-5 pb-5">
+          <p className="text-sm leading-relaxed text-muted-foreground">{answer}</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function Portfolio() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-10">
@@ -250,6 +346,37 @@ function Portfolio() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <ServiceCard key={s.tag} {...s} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="mb-6 h-px w-16 bg-primary" />
+            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
+              questions fréquentes
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Tout ce que vous devez savoir sur mes sites web, micro-SaaS et agents IA.
+            </p>
+          </motion.div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {faqs.map((faq, i) => (
+              <FAQItem
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              />
             ))}
           </div>
         </section>
