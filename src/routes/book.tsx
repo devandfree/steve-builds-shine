@@ -6,28 +6,28 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
-      { title: "Book a call — Steve, Product Builder" },
-      { name: "description", content: "Book a 30 min intro call with Steve to talk about your product." },
-      { property: "og:title", content: "Book a call — Steve" },
-      { property: "og:description", content: "Book a 30 min intro call with Steve to talk about your product." },
+      { title: "Réserver un appel — Steve" },
+      { name: "description", content: "30 min offertes pour parler de votre site, micro-SaaS ou agent IA." },
+      { property: "og:title", content: "Réserver un appel — Steve" },
+      { property: "og:description", content: "30 min offertes pour parler de votre site, micro-SaaS ou agent IA." },
     ],
   }),
   component: Book,
 });
 
 const perks = [
-  "30 minutes, no strings attached",
-  "We scope your idea or product",
-  "You leave with a concrete next step",
-  "Video call — Google Meet",
+  "30 minutes, sans engagement",
+  "On cadre votre projet ensemble",
+  "Vous repartez avec une prochaine étape claire",
+  "Appel visio — Google Meet",
 ];
 
 function Book() {
   return (
     <PageShell
-      eyebrow="LET'S TALK"
-      title="Book a call"
-      intro="Pick a slot that works for you. I'll reply within a few hours to confirm."
+      eyebrow="ON EN PARLE"
+      title="Réserver un appel"
+      intro="Choisissez un créneau qui vous arrange. Je confirme sous quelques heures."
     >
       <div className="grid gap-6 sm:grid-cols-[1fr_1.2fr]">
         <div className="space-y-3">
@@ -56,13 +56,13 @@ function Book() {
               <Video className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-sm font-bold">Intro call</p>
-              <p className="text-xs text-muted-foreground">Free · 30 min</p>
+              <p className="text-sm font-bold">Appel découverte</p>
+              <p className="text-xs text-muted-foreground">Gratuit · 30 min</p>
             </div>
           </div>
 
           <div className="mt-6 space-y-2">
-            {["Tue, Aug 5 · 10:00", "Wed, Aug 6 · 14:00", "Thu, Aug 7 · 16:30", "Fri, Aug 8 · 11:00"].map((s, i) => (
+            {["Mar. 21 juil. · 10:00", "Mer. 22 juil. · 14:00", "Jeu. 23 juil. · 16:30", "Ven. 24 juil. · 11:00"].map((s, i) => (
               <motion.button
                 key={s}
                 whileHover={{ scale: 1.02 }}
@@ -85,7 +85,7 @@ function Book() {
             href="mailto:steve@example.com"
             className="mt-6 block w-full rounded-full bg-primary py-3 text-center text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
           >
-            Or email me directly →
+            Ou écrivez-moi directement →
           </a>
         </motion.div>
       </div>
