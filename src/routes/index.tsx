@@ -52,6 +52,44 @@ const contacts = [
   { icon: Github, label: "Github", href: "https://github.com" },
 ];
 
+const faqs = [
+  {
+    question: "Quel type de site web peux-tu créer ?",
+    answer:
+      "Sites vitrines, landing pages, portfolios, blogs et sites orientés conversion. Chaque site est pensé pour être rapide, responsive, SEO-friendly et conçu pour convertir vos visiteurs en clients.",
+  },
+  {
+    question: "Qu'est-ce qu'un micro-SaaS et comment ça se lance ?",
+    answer:
+      "Un micro-SaaS est un petit logiciel en ligne qui résout un problème précis pour une cible bien définie. Je m'occupe du cadrage produit, du design, du développement full-stack (auth, base de données, paiements Stripe) et du déploiement.",
+  },
+  {
+    question: "Qu'est-ce qu'un agent IA et comment peut-il m'aider ?",
+    answer:
+      "Un agent IA est un assistant automatisé qui effectue des tâches répétitives à votre place : répondre au support, qualifier des leads, rédiger du contenu, synchroniser des données entre vos outils. Je le connecte à vos outils existants (Slack, Notion, Gmail, HubSpot, etc.) via des workflows n8n ou Make.",
+  },
+  {
+    question: "Quel est le délai pour livrer un site web ?",
+    answer:
+      "Un site vitrine ou une landing page simple se livre généralement en 1 à 3 semaines. Les projets plus complexes (micro-SaaS ou agents IA multi-étapes) demandent entre 2 et 8 semaines selon le périmètre.",
+  },
+  {
+    question: "Quels outils et technologies utilises-tu ?",
+    answer:
+      "Je travaille principalement avec Lovable, Next.js, Supabase, Stripe, OpenAI, Claude, n8n et Resend. Cette stack me permet de livrer vite, de manière fiable et scalable.",
+  },
+  {
+    question: "Comment se déroule un projet avec toi ?",
+    answer:
+      "On démarre par un appel de cadrage gratuit pour bien comprendre votre besoin. Ensuite je propose un plan, un devis et un délai. Durant le projet, je fais des points réguliers et vous livre une version testable avant la mise en ligne.",
+  },
+  {
+    question: "Combien coûte un projet type ?",
+    answer:
+      "Les sites web commencent à 1 500 €, les agents IA à 2 500 € et les micro-SaaS à 4 500 €. Le conseil produit est proposé à partir de 1 200 € par mois. Chaque devis est ajusté en fonction du périmètre exact.",
+  },
+];
+
 const MotionLink = motion(Link);
 
 function PillButton({
