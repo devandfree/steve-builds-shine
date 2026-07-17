@@ -7,9 +7,9 @@ export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
       { title: "Réserver un appel — Steve" },
-      { name: "description", content: "30 min offertes pour parler de votre site, micro-SaaS ou agent IA." },
+      { name: "description", content: "30 min offertes pour parler de votre site web ou de votre agent IA." },
       { property: "og:title", content: "Réserver un appel — Steve" },
-      { property: "og:description", content: "30 min offertes pour parler de votre site, micro-SaaS ou agent IA." },
+      { property: "og:description", content: "30 min offertes pour parler de votre site web ou de votre agent IA." },
     ],
   }),
   component: Book,

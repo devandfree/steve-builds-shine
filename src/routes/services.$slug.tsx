@@ -33,20 +33,6 @@ const data: Record<string, { eyebrow: string; title: string; intro: string; deli
     timeline: "1 à 3 semaines",
     from: "à partir de 1 500 €",
   },
-  saas: {
-    eyebrow: "MICRO-SAAS / MVP BUILD",
-    title: "Lancez votre micro-SaaS",
-    intro: "De l'idée au produit payant. Auth, base de données, paiements Stripe, tout est branché.",
-    deliverables: [
-      "Cadrage produit & user flows",
-      "UI et système de composants",
-      "Build full-stack (Next.js + Supabase)",
-      "Auth, base de données, paiements Stripe",
-      "Déploiement + documentation",
-    ],
-    timeline: "3 à 8 semaines",
-    from: "à partir de 4 500 €",
-  },
   ai: {
     eyebrow: "AGENTS IA / AUTOMATISATIONS",
     title: "Automatisez avec l'IA",

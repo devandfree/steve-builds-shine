@@ -38,7 +38,6 @@ const tools = [
 
 const services = [
   { title: "SITES WEB /\nLANDING PAGES", tag: "WEB", slug: "web" },
-  { title: "MICRO-SAAS /\nMVP BUILD", tag: "SAAS", slug: "saas" },
   { title: "AGENTS IA /\nAUTOMATISATIONS", tag: "IA", slug: "ai" },
   { title: "CONSEIL /\nPRODUCT STRATEGY", tag: "CONSEIL", slug: "strat" },
 ];
@@ -59,11 +58,6 @@ const faqs = [
       "Sites vitrines, landing pages, portfolios, blogs et sites orientés conversion. Chaque site est pensé pour être rapide, responsive, SEO-friendly et conçu pour convertir vos visiteurs en clients.",
   },
   {
-    question: "Qu'est-ce qu'un micro-SaaS et comment ça se lance ?",
-    answer:
-      "Un micro-SaaS est un petit logiciel en ligne qui résout un problème précis pour une cible bien définie. Je m'occupe du cadrage produit, du design, du développement full-stack (auth, base de données, paiements Stripe) et du déploiement.",
-  },
-  {
     question: "Qu'est-ce qu'un agent IA et comment peut-il m'aider ?",
     answer:
       "Un agent IA est un assistant automatisé qui effectue des tâches répétitives à votre place : répondre au support, qualifier des leads, rédiger du contenu, synchroniser des données entre vos outils. Je le connecte à vos outils existants (Slack, Notion, Gmail, HubSpot, etc.) via des workflows n8n ou Make.",
@@ -71,12 +65,17 @@ const faqs = [
   {
     question: "Quel est le délai pour livrer un site web ?",
     answer:
-      "Un site vitrine ou une landing page simple se livre généralement en 1 à 3 semaines. Les projets plus complexes (micro-SaaS ou agents IA multi-étapes) demandent entre 2 et 8 semaines selon le périmètre.",
+      "Un site vitrine ou une landing page simple se livre généralement en 1 à 3 semaines. Les agents IA multi-étapes ou les sites complexes demandent entre 2 et 6 semaines selon le périmètre.",
+  },
+  {
+    question: "Quel est le délai pour déployer un agent IA ?",
+    answer:
+      "Un agent IA simple (support, qualification ou rédaction) se déploie en 2 à 4 semaines. Les agents connectés à plusieurs outils et bases de données demandent plus de cadrage, généralement 4 à 6 semaines.",
   },
   {
     question: "Quels outils et technologies utilises-tu ?",
     answer:
-      "Je travaille principalement avec Lovable, Next.js, Supabase, Stripe, OpenAI, Claude, n8n et Resend. Cette stack me permet de livrer vite, de manière fiable et scalable.",
+      "Je travaille principalement avec Lovable, Next.js, Supabase, OpenAI, Claude, n8n et Resend. Cette stack me permet de livrer vite, de manière fiable et scalable, que ce soit pour un site ou un agent IA.",
   },
   {
     question: "Comment se déroule un projet avec toi ?",
@@ -86,7 +85,7 @@ const faqs = [
   {
     question: "Combien coûte un projet type ?",
     answer:
-      "Les sites web commencent à 1 500 €, les agents IA à 2 500 € et les micro-SaaS à 4 500 €. Le conseil produit est proposé à partir de 1 200 € par mois. Chaque devis est ajusté en fonction du périmètre exact.",
+      "Les sites web commencent à 1 500 € et les agents IA à 2 500 €. Le conseil produit est proposé à partir de 1 200 € par mois. Chaque devis est ajusté en fonction du périmètre exact.",
   },
 ];
 
@@ -225,7 +224,7 @@ function Portfolio() {
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
-              Sites web, Micro-SaaS<br />& Agents IA
+              Product Builder<br />Web & IA
             </h2>
           </motion.div>
 
@@ -260,9 +259,9 @@ function Portfolio() {
             className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
           >
             <p>
-              Salut, moi c&apos;est Steve. Je conçois et je développe des sites web,
-              des micro-SaaS et des agents IA pour transformer vos idées en produits
-              qui rapportent — vite et sans friction.
+              Salut, moi c&apos;est Steve. Je conçois et je développe des sites web
+              et des agents IA pour transformer vos idées en produits utiles —
+              vite et sans friction.
             </p>
           </motion.div>
         </section>
@@ -306,10 +305,9 @@ function Portfolio() {
             rapides et rentables — pas des maquettes.
           </h2>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Je ne suis pas designer, je suis builder. Mon truc c&apos;est de passer
-            de l&apos;idée au produit en ligne : un site qui convertit, un micro-SaaS
-            qui trouve ses premiers clients, ou un agent IA qui automatise ce qui
-            vous prend trop de temps.
+            Je ne suis pas designer, je suis Product Builder. Mon truc c&apos;est de passer
+            de l&apos;idée au produit en ligne : un site qui convertit ou un agent IA
+            qui automatise ce qui vous prend trop de temps.
           </p>
 
           {/* Logo strip */}
@@ -363,7 +361,7 @@ function Portfolio() {
               questions fréquentes
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Tout ce que vous devez savoir sur mes sites web, micro-SaaS et agents IA.
+              Tout ce que vous devez savoir sur mes sites web et agents IA.
             </p>
           </motion.div>
 
@@ -411,7 +409,7 @@ function Portfolio() {
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Steve — Sites web, Micro-SaaS & Agents IA
+            © {new Date().getFullYear()} Steve — Product Builder · Sites web & Agents IA
           </p>
         </motion.section>
       </div>
