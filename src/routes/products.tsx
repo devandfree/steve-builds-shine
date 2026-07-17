@@ -7,9 +7,9 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Mes produits — Steve" },
-      { name: "description", content: "Templates de sites, boilerplates micro-SaaS et agents IA prêts à l'emploi." },
+      { name: "description", content: "Templates de sites et agents IA prêts à l'emploi." },
       { property: "og:title", content: "Mes produits — Steve" },
-      { property: "og:description", content: "Templates de sites, boilerplates micro-SaaS et agents IA prêts à l'emploi." },
+      { property: "og:description", content: "Templates de sites et agents IA prêts à l'emploi." },
     ],
   }),
   component: Products,
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/products")({
 
 const products = [
   { name: "Landing Kit Pro", price: "49 €", desc: "8 sections de landing page prêtes à convertir, éditables sans coder." },
-  { name: "Micro-SaaS Starter", price: "99 €", desc: "Boilerplate Next.js + Supabase + Stripe pour lancer un SaaS en un week-end." },
+  { name: "Site Starter", price: "79 €", desc: "Template Next.js + Supabase pour lancer un site vitrine ou un blog en un week-end." },
   { name: "AI Agent Template", price: "79 €", desc: "Squelette d'agent IA avec RAG, outils et interface chat, prêt à brancher sur vos données." },
   { name: "Automation Pack", price: "39 €", desc: "10 workflows n8n prêts à l'emploi : leads, emails, CRM, notifications." },
 ];
@@ -27,7 +27,7 @@ function Products() {
     <PageShell
       eyebrow="PRODUITS NUMÉRIQUES"
       title="Mes produits"
-      intro="Templates et boilerplates pour lancer votre site, votre micro-SaaS ou votre agent IA en quelques heures."
+      intro="Templates et outils prêts à l'emploi pour lancer votre site web ou votre agent IA en quelques heures."
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {products.map((p, i) => (
