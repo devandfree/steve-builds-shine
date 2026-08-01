@@ -332,7 +332,7 @@ function Portfolio() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              Je ne suis pas designer. Je suis Product Builder : je cadrer le besoin,
+              Je ne suis pas designer. Je suis Product Builder : je cadre le besoin,
               je choisis la stack, et je livre un site ou un agent IA qui fonctionne
               dès le premier jour. Pas de process lourds, pas de revues interminables —
               juste du résultat.
