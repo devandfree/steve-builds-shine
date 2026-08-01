@@ -299,110 +299,103 @@ function Portfolio() {
           className="relative mt-20"
         >
           {/* Background decorative elements */}
-          <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
-          <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
+          <div className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[140px]" />
 
-          <div className="relative grid gap-12 lg:grid-cols-[1fr_400px] lg:items-end">
-            <div className="space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary"
-              >
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-                Product Builder Web & IA
-              </motion.div>
-
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl font-extrabold leading-[0.95] tracking-tighter text-foreground sm:text-5xl lg:text-6xl"
-              >
-                Je construis des produits web utiles,
-                <br className="hidden sm:block" />
-                rapides et rentables —{" "}
-                <span className="text-muted-foreground">pas des maquettes.</span>
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-              >
-                Je ne suis pas designer, je suis Product Builder. Mon truc c&apos;est de passer
-                de l&apos;idée au produit en ligne : un site qui convertit ou un agent IA
-                qui automatise ce qui vous prend trop de temps.
-              </motion.p>
-            </div>
-
-            {/* Tech Stack Grid */}
+          <div className="relative flex flex-col items-center text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary"
+            >
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+              Product Builder Web & IA
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-8 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-foreground sm:text-6xl lg:text-7xl"
+            >
+              De l&apos;idée au produit en ligne,
+              <br className="hidden sm:block" />
+              <span className="text-primary">sans friction.</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
+              Je ne suis pas designer. Je suis Product Builder : je cadrer le besoin,
+              je choisis la stack, et je livre un site ou un agent IA qui fonctionne
+              dès le premier jour. Pas de process lourds, pas de revues interminables —
+              juste du résultat.
+            </motion.p>
+
+            {/* Process cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-4 gap-3 rounded-3xl border border-border/50 bg-card/40 p-6 backdrop-blur-sm"
+              className="mt-12 grid w-full max-w-4xl gap-4 sm:grid-cols-3"
             >
               {[
-                { label: "LV", name: "Lovable" },
-                { label: "VC", name: "Vercel" },
-                { label: "ST", name: "Stripe" },
-                { label: "SB", name: "Supabase" },
-                { label: "AI", name: "OpenAI" },
-                { label: "CL", name: "Claude" },
-                { label: "N8", name: "n8n" },
-                { label: "RS", name: "Resend" },
-              ].map((tool, i) => (
+                {
+                  step: "01",
+                  title: "Cadrer",
+                  desc: "On définit ensemble le vrai problème à résoudre et le périmètre du produit.",
+                },
+                {
+                  step: "02",
+                  title: "Construire",
+                  desc: "Site web ou agent IA, livré avec les bons outils et une stack solide.",
+                },
+                {
+                  step: "03",
+                  title: "Déployer",
+                  desc: "Mise en ligne, tests, et itérations rapides pour atteindre vos objectifs.",
+                },
+              ].map((item, i) => (
                 <motion.div
-                  key={tool.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + i * 0.05 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="group grid aspect-square place-items-center rounded-xl border border-border bg-secondary/40 transition-colors hover:border-primary/50"
+                  key={item.step}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="rounded-2xl border border-border bg-card/60 p-5 text-left backdrop-blur-sm transition-colors hover:border-primary/40"
                 >
-                  <span className="font-mono text-xs font-bold text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100">
-                    {tool.label}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-bold text-primary">{item.step}</span>
+                    <div className="h-px flex-1 bg-border" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-bold text-foreground">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
 
-          {/* Bottom Stats Line */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-16 flex flex-wrap items-center gap-12 border-t border-border/50 pt-8"
-          >
-            <div className="space-y-1">
-              <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                Stack Principale
-              </p>
-              <p className="font-mono text-sm text-foreground">Lovable / Next.js / Supabase</p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
-                Disponibilité
-              </p>
-              <p className="font-mono text-sm text-primary">Projets en cours</p>
-            </div>
-            <div className="ml-auto flex items-center gap-4">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent to-border" />
-              <span className="font-mono text-xs text-muted-foreground">
-                Product Builder · Web & IA
-              </span>
-            </div>
-          </motion.div>
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-border/50 pt-8"
+            >
+              <span className="text-sm text-muted-foreground">Un projet à cadrer ?</span>
+              <Link
+                to="/book"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
+              >
+                Réserver un appel
+                <ChevronRight className="h-4 w-4" strokeWidth={3} />
+              </Link>
+            </motion.div>
+          </div>
         </motion.section>
 
         {/* What I do */}
