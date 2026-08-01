@@ -290,41 +290,119 @@ function Portfolio() {
           ))}
         </motion.div>
 
-        {/* Statement */}
+        {/* Statement / À propos */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mt-20"
+          className="relative mt-20"
         >
-          <div className="mb-6 h-px w-16 bg-primary" />
-          <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Je construis des produits web utiles,
-            <br className="hidden sm:block" />
-            rapides et rentables — pas des maquettes.
-          </h2>
-          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Je ne suis pas designer, je suis Product Builder. Mon truc c&apos;est de passer
-            de l&apos;idée au produit en ligne : un site qui convertit ou un agent IA
-            qui automatise ce qui vous prend trop de temps.
-          </p>
+          {/* Background decorative elements */}
+          <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
+          <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
 
-          {/* Logo strip */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-40">
-            {["◆ Lovable", "▲ Vercel", "★ Stripe", "◉ Supabase", "✦ OpenAI", "◈ Claude", "▼ n8n", "● Resend"].map((l, i) => (
-              <motion.span
-                key={l}
-                initial={{ opacity: 0, y: 10 }}
+          <div className="relative grid gap-12 lg:grid-cols-[1fr_400px] lg:items-end">
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="text-xs font-bold tracking-wider text-muted-foreground"
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary"
               >
-                {l}
-              </motion.span>
-            ))}
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+                Product Builder Web & IA
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-3xl font-extrabold leading-[0.95] tracking-tighter text-foreground sm:text-5xl lg:text-6xl"
+              >
+                Je construis des produits web utiles,
+                <br className="hidden sm:block" />
+                rapides et rentables —{" "}
+                <span className="text-muted-foreground">pas des maquettes.</span>
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              >
+                Je ne suis pas designer, je suis Product Builder. Mon truc c&apos;est de passer
+                de l&apos;idée au produit en ligne : un site qui convertit ou un agent IA
+                qui automatise ce qui vous prend trop de temps.
+              </motion.p>
+            </div>
+
+            {/* Tech Stack Grid */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="grid grid-cols-4 gap-3 rounded-3xl border border-border/50 bg-card/40 p-6 backdrop-blur-sm"
+            >
+              {[
+                { label: "LV", name: "Lovable" },
+                { label: "VC", name: "Vercel" },
+                { label: "ST", name: "Stripe" },
+                { label: "SB", name: "Supabase" },
+                { label: "AI", name: "OpenAI" },
+                { label: "CL", name: "Claude" },
+                { label: "N8", name: "n8n" },
+                { label: "RS", name: "Resend" },
+              ].map((tool, i) => (
+                <motion.div
+                  key={tool.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + i * 0.05 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="group grid aspect-square place-items-center rounded-xl border border-border bg-secondary/40 transition-colors hover:border-primary/50"
+                >
+                  <span className="font-mono text-xs font-bold text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100">
+                    {tool.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
+
+          {/* Bottom Stats Line */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-16 flex flex-wrap items-center gap-12 border-t border-border/50 pt-8"
+          >
+            <div className="space-y-1">
+              <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+                Stack Principale
+              </p>
+              <p className="font-mono text-sm text-foreground">Lovable / Next.js / Supabase</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+                Disponibilité
+              </p>
+              <p className="font-mono text-sm text-primary">Projets en cours</p>
+            </div>
+            <div className="ml-auto flex items-center gap-4">
+              <div className="h-px w-24 bg-gradient-to-r from-transparent to-border" />
+              <span className="font-mono text-xs text-muted-foreground">
+                Product Builder · Web & IA
+              </span>
+            </div>
+          </motion.div>
         </motion.section>
 
         {/* What I do */}
