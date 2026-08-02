@@ -16,11 +16,7 @@ import {
   Bot,
   Zap,
   Rocket,
-  ChevronRight,
-  Plus,
-  Minus,
 } from "lucide-react";
-import { useState } from "react";
 import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -36,12 +32,6 @@ const tools = [
   { icon: Sparkles, name: "Claude" },
 ];
 
-const services = [
-  { title: "SITES WEB /\nLANDING PAGES", tag: "WEB", slug: "web" },
-  { title: "AGENTS IA /\nAUTOMATISATIONS", tag: "IA", slug: "ai" },
-  { title: "CONSEIL /\nPRODUCT STRATEGY", tag: "CONSEIL", slug: "strat" },
-];
-
 const contacts = [
   { icon: Mail, label: "Email", href: "mailto:steve@example.com" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
@@ -49,44 +39,6 @@ const contacts = [
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Github, label: "Github", href: "https://github.com" },
-];
-
-const faqs = [
-  {
-    question: "Quel type de site web peux-tu créer ?",
-    answer:
-      "Sites vitrines, landing pages, portfolios, blogs et sites orientés conversion. Chaque site est pensé pour être rapide, responsive, SEO-friendly et conçu pour convertir vos visiteurs en clients.",
-  },
-  {
-    question: "Qu'est-ce qu'un agent IA et comment peut-il m'aider ?",
-    answer:
-      "Un agent IA est un assistant automatisé qui effectue des tâches répétitives à votre place : répondre au support, qualifier des leads, rédiger du contenu, synchroniser des données entre vos outils. Je le connecte à vos outils existants (Slack, Notion, Gmail, HubSpot, etc.) via des workflows n8n ou Make.",
-  },
-  {
-    question: "Quel est le délai pour livrer un site web ?",
-    answer:
-      "Un site vitrine ou une landing page simple se livre généralement en 1 à 3 semaines. Les agents IA multi-étapes ou les sites complexes demandent entre 2 et 6 semaines selon le périmètre.",
-  },
-  {
-    question: "Quel est le délai pour déployer un agent IA ?",
-    answer:
-      "Un agent IA simple (support, qualification ou rédaction) se déploie en 2 à 4 semaines. Les agents connectés à plusieurs outils et bases de données demandent plus de cadrage, généralement 4 à 6 semaines.",
-  },
-  {
-    question: "Quels outils et technologies utilises-tu ?",
-    answer:
-      "Je travaille principalement avec Lovable, Next.js, Supabase, OpenAI, Claude, n8n et Resend. Cette stack me permet de livrer vite, de manière fiable et scalable, que ce soit pour un site ou un agent IA.",
-  },
-  {
-    question: "Comment se déroule un projet avec toi ?",
-    answer:
-      "On démarre par un appel de cadrage gratuit pour bien comprendre votre besoin. Ensuite je propose un plan, un devis et un délai. Durant le projet, je fais des points réguliers et vous livre une version testable avant la mise en ligne.",
-  },
-  {
-    question: "Combien coûte un projet type ?",
-    answer:
-      "Les sites web commencent à 1 500 € et les agents IA à 2 500 €. Le conseil produit est proposé à partir de 1 200 € par mois. Chaque devis est ajusté en fonction du périmètre exact.",
-  },
 ];
 
 const MotionLink = motion(Link);
@@ -116,92 +68,7 @@ function PillButton({
   );
 }
 
-function ServiceCard({ title, tag, slug, index }: { title: string; tag: string; slug: string; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-    >
-      <Link
-        to="/services/$slug"
-        params={{ slug }}
-        className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 transition-colors hover:border-primary/40"
-      >
-        <div className="grid h-14 w-20 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 text-[10px] font-black tracking-widest text-primary">
-          {tag}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="whitespace-pre-line text-[11px] font-bold uppercase tracking-wider text-foreground/90 leading-tight">
-            {title}
-          </p>
-        </div>
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
-          <ChevronRight className="h-4 w-4" strokeWidth={3} />
-        </span>
-      </Link>
-    </motion.div>
-  );
-}
-
-function FAQItem({
-  question,
-  answer,
-  index,
-  isOpen,
-  onToggle,
-}: {
-  question: string;
-  answer: string;
-  index: number;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="overflow-hidden rounded-2xl border border-border bg-card"
-    >
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/50"
-        aria-expanded={isOpen}
-      >
-        <span className="text-sm font-semibold text-foreground">{question}</span>
-        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
-          {isOpen ? (
-            <Minus className="h-3.5 w-3.5" strokeWidth={3} />
-          ) : (
-            <Plus className="h-3.5 w-3.5" strokeWidth={3} />
-          )}
-        </span>
-      </button>
-      <motion.div
-        initial={false}
-        animate={{
-          height: isOpen ? "auto" : 0,
-          opacity: isOpen ? 1 : 0,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
-      >
-        <div className="px-5 pb-5">
-          <p className="text-sm leading-relaxed text-muted-foreground">{answer}</p>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 function Portfolio() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-10">
@@ -289,166 +156,6 @@ function Portfolio() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Statement / À propos */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="relative mt-20"
-        >
-          {/* Background decorative elements */}
-          <div className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[140px]" />
-
-          <div className="relative flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary"
-            >
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-              Product Builder Web & IA
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-8 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tighter text-foreground sm:text-6xl lg:text-7xl"
-            >
-              De l&apos;idée au produit en ligne,
-              <br className="hidden sm:block" />
-              <span className="text-primary">sans friction.</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-            >
-              Je ne suis pas designer. Je suis Product Builder : je cadre le besoin,
-              je choisis la stack, et je livre un site ou un agent IA qui fonctionne
-              dès le premier jour. Pas de process lourds, pas de revues interminables —
-              juste du résultat.
-            </motion.p>
-
-            {/* Process cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-12 grid w-full max-w-4xl gap-4 sm:grid-cols-3"
-            >
-              {[
-                {
-                  step: "01",
-                  title: "Cadrer",
-                  desc: "On définit ensemble le vrai problème à résoudre et le périmètre du produit.",
-                },
-                {
-                  step: "02",
-                  title: "Construire",
-                  desc: "Site web ou agent IA, livré avec les bons outils et une stack solide.",
-                },
-                {
-                  step: "03",
-                  title: "Déployer",
-                  desc: "Mise en ligne, tests, et itérations rapides pour atteindre vos objectifs.",
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.step}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-2xl border border-border bg-card/60 p-5 text-left backdrop-blur-sm transition-colors hover:border-primary/40"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-primary">{item.step}</span>
-                    <div className="h-px flex-1 bg-border" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-bold text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Bottom CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-border/50 pt-8"
-            >
-              <span className="text-sm text-muted-foreground">Un projet à cadrer ?</span>
-              <Link
-                to="/book"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-              >
-                Réserver un appel
-                <ChevronRight className="h-4 w-4" strokeWidth={3} />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* What I do */}
-        <section className="mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="mb-6 h-px w-16 bg-primary" />
-            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
-              ce que je fais
-            </h2>
-          </motion.div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <ServiceCard key={s.tag} {...s} index={i} />
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="mb-6 h-px w-16 bg-primary" />
-            <h2 className="text-4xl font-bold lowercase tracking-tight sm:text-5xl">
-              questions fréquentes
-            </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Tout ce que vous devez savoir sur mes sites web et agents IA.
-            </p>
-          </motion.div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {faqs.map((faq, i) => (
-              <FAQItem
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
-                index={i}
-                isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-              />
-            ))}
-          </div>
-        </section>
 
         {/* Contact */}
         <motion.section
