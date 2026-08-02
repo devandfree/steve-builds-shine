@@ -1,57 +1,65 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
+import { Globe, Bot, Rocket } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Mes produits — Steve" },
-      { name: "description", content: "Templates de sites et agents IA prêts à l'emploi." },
-      { property: "og:title", content: "Mes produits — Steve" },
-      { property: "og:description", content: "Templates de sites et agents IA prêts à l'emploi." },
+      { title: "Ce que je Build — Steve" },
+      { name: "description", content: "Sites web, agents IA et produits digitaux conçus pour accélérer votre business." },
+      { property: "og:title", content: "Ce que je Build — Steve" },
+      { property: "og:description", content: "Sites web, agents IA et produits digitaux conçus pour accélérer votre business." },
     ],
   }),
   component: Products,
 });
 
-const products = [
-  { name: "Landing Kit Pro", price: "49 €", desc: "8 sections de landing page prêtes à convertir, éditables sans coder." },
-  { name: "Site Starter", price: "79 €", desc: "Template Next.js + Supabase pour lancer un site vitrine ou un blog en un week-end." },
-  { name: "AI Agent Template", price: "79 €", desc: "Squelette d'agent IA avec RAG, outils et interface chat, prêt à brancher sur vos données." },
-  { name: "Automation Pack", price: "39 €", desc: "10 workflows n8n prêts à l'emploi : leads, emails, CRM, notifications." },
+const offers = [
+  {
+    icon: Globe,
+    title: "Un site qui convertit",
+    desc: "Clair, rapide, efficace. Pensé pour transformer vos visiteurs en clients.",
+  },
+  {
+    icon: Bot,
+    title: "Un agent IA qui travaille pour vous",
+    desc: "Il répond, qualifie, automatise. 24h/24, sans pause.",
+  },
+  {
+    icon: Rocket,
+    title: "Un produit pour accélérer votre business",
+    desc: "Vous avez une idée ? On la transforme en solution concrète.",
+  },
 ];
 
 function Products() {
   return (
     <PageShell
-      eyebrow="PRODUITS NUMÉRIQUES"
-      title="Mes produits"
-      intro="Templates et outils prêts à l'emploi pour lancer votre site web ou votre agent IA en quelques heures."
+      eyebrow="OFFRES"
+      title="Ce que je Build"
+      intro="Ce que je peux mettre en place pour vous."
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        {products.map((p, i) => (
-          <motion.a
-            key={p.name}
-            href="#"
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {offers.map((offer, i) => (
+          <motion.div
+            key={offer.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.06 * i }}
-            whileHover={{ y: -4 }}
-            className="group flex flex-col rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40"
+            transition={{ delay: 0.08 * i, duration: 0.5 }}
+            whileHover={{ y: -6, borderColor: "hsl(var(--primary) / 0.5)" }}
+            className="flex flex-col rounded-2xl border border-border bg-card p-6 transition-colors"
           >
-            <div className="mb-4 grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
-              <ShoppingBag className="h-5 w-5" />
+            <div className="mb-5 grid h-14 w-14 place-items-center rounded-xl bg-primary/10 text-primary">
+              <offer.icon className="h-6 w-6" strokeWidth={2} />
             </div>
-            <p className="text-sm font-bold text-foreground">{p.name}</p>
-            <p className="mt-1 flex-1 text-xs text-muted-foreground">{p.desc}</p>
-            <div className="mt-4 flex items-center justify-between">
-              <span className="text-lg font-black text-primary">{p.price}</span>
-              <span className="text-xs font-semibold text-muted-foreground transition-colors group-hover:text-foreground">
-                Je le veux →
-              </span>
-            </div>
-          </motion.a>
+            <h3 className="text-lg font-bold leading-tight text-foreground">
+              {offer.title}
+            </h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+              {offer.desc}
+            </p>
+          </motion.div>
         ))}
       </div>
     </PageShell>
