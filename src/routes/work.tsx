@@ -16,12 +16,20 @@ export const Route = createFileRoute("/work")({
 });
 
 const projects = [
-  { name: "Ember Landing", tag: "WEB", year: "2025", desc: "Landing page pour une fintech Série A. +38% de conversion vs l'ancienne version." },
-  { name: "Kaya Support AI", tag: "IA", year: "2025", desc: "Agent IA qui répond aux emails support 24/7. -70% de temps de traitement." },
-  { name: "Kreativ Studio", tag: "WEB", year: "2025", desc: "Site vitrine pour un studio créatif, livré en 5 jours." },
-  { name: "FinEdge Site", tag: "WEB", year: "2024", desc: "Site vitrine corporate + blog pour une fintech en croissance." },
-  { name: "AutoLeads", tag: "IA", year: "2024", desc: "Agent IA de qualification de leads B2B branché sur HubSpot." },
-  { name: "Elara Portfolio", tag: "WEB", year: "2024", desc: "Portfolio immersif pour une designer produit, orienté conversion." },
+  {
+    name: "Ecoland",
+    tag: "WEB",
+    year: "2025",
+    desc: "Site vitrine complet avec fonction e-commerce (panier d'achat) et produits.",
+    href: "https://ecoland-two.vercel.app/",
+  },
+  {
+    name: "Renovex",
+    tag: "WEB",
+    year: "2025",
+    desc: "Site web vitrine complet avec blog.",
+    href: "https://renovex-btp.vercel.app/",
+  },
 ];
 
 function Work() {
@@ -35,7 +43,9 @@ function Work() {
         {projects.map((p, i) => (
           <motion.a
             key={p.name}
-            href="#"
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 * i }}
