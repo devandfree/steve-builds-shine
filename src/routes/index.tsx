@@ -76,7 +76,7 @@ function Portfolio() {
         <nav className="grid grid-cols-2 items-center gap-3 sm:flex sm:justify-between">
           <PillButton icon={Play} label="Mes projets" to="/work" />
           <div className="hidden sm:block">
-            <PillButton icon={ShoppingBag} label="Mes produits" to="/products" />
+            <PillButton icon={ShoppingBag} label="Ce que je Build" to="/products" />
           </div>
           <PillButton icon={CheckCircle2} label="Réserver un appel" to="/book" />
         </nav>
