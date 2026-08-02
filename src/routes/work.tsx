@@ -43,7 +43,9 @@ function Work() {
         {projects.map((p, i) => (
           <motion.a
             key={p.name}
-            href="#"
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 * i }}
