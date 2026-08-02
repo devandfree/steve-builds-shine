@@ -126,9 +126,9 @@ function Portfolio() {
             className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
           >
             <p>
-              Salut, moi c&apos;est Steve. Je conçois et je développe des sites web
-              et des agents IA pour transformer vos idées en produits utiles —
-              vite et sans friction.
+              Salut, moi c&apos;est Steve. Je conçois des sites web et des agents
+              IA qui aident votre business à aller plus vite, convertir plus et
+              automatiser ce qui vous fait perdre du temps.
             </p>
           </motion.div>
         </section>
