@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Bot, Rocket, Calendar } from "lucide-react";
+import { Globe, Bot, Rocket, Calendar, MessageSquare, FileText, Hammer } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/products")({
