@@ -82,6 +82,38 @@ function Products() {
         ))}
       </div>
 
+      {/* Comment ça se passe */}
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        className="mt-16"
+      >
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          Process
+        </p>
+        <h2 className="mt-2 text-2xl font-bold text-foreground">Comment ça se passe</h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 * i, duration: 0.4 }}
+              className="rounded-2xl border border-border bg-card p-5"
+            >
+              <div className="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">
+                <step.icon className="h-5 w-5" strokeWidth={2} />
+              </div>
+              <h3 className="text-sm font-bold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
