@@ -31,6 +31,8 @@ const offers = [
     title: "Un produit pour accélérer votre business",
     desc: "Vous avez une idée ? On la transforme en solution concrète.",
   },
+];
+
 const steps = [
   {
     icon: MessageSquare,
