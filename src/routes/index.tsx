@@ -27,7 +27,7 @@ const tools = [
   { icon: Code2, name: "Lovable" },
   { icon: Rocket, name: "Next.js" },
   { icon: Database, name: "Supabase" },
-  { icon: Bot, name: "OpenAI" },
+  { icon: Bot, name: "Google AI Studio" },
   { icon: Sparkles, name: "Claude" },
 ];
 
