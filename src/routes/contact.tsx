@@ -106,6 +106,26 @@ function Contact() {
           ))}
         </div>
       </motion.div>
+
+      {/* FAQ */}
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="mt-12"
+      >
+        <div className="mb-6 flex items-center gap-2">
+          <HelpCircle className="h-4 w-4 text-primary" />
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            Questions fréquentes
+          </p>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((faq, i) => (
+            <FAQItem key={faq.question} faq={faq} index={i} />
+          ))}
+        </div>
+      </motion.section>
     </PageShell>
   );
 }
