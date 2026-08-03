@@ -17,7 +17,7 @@ import {
   Zap,
   Rocket,
 } from "lucide-react";
-import steveAvatar from "@https://www.hebergeur-image.com/upload/129.0.60.177-6a711ecc9be19.png";
+import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
