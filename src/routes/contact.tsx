@@ -59,7 +59,7 @@ const faqs = [
   {
     question: "Travaillez-vous avec des outils no-code ?",
     answer:
-      "Non. Je privilégie une stack moderne (code) pour des performances, un SEO et une maintenabilité optimales.",
+      "Oui. Je travaille avec une stack moderne (low-code, no-code et IA) pour des performances, un SEO et une maintenabilité optimales. Avec un contôle sur le code source.",
   },
   {
     question: "Et après la livraison, ça fonctionne comment ?",
