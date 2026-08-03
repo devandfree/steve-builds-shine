@@ -1,94 +1,110 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Calendar, Clock, CheckCircle2, Video } from "lucide-react";
+import { Mail, MessageCircle, Instagram, Twitter, Linkedin, Github, ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
-export const Route = createFileRoute("/book")({
+export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Réserver un appel — Steve" },
-      { name: "description", content: "30 min offertes pour parler de votre site web ou de votre agent IA." },
-      { property: "og:title", content: "Réserver un appel — Steve" },
-      { property: "og:description", content: "30 min offertes pour parler de votre site web ou de votre agent IA." },
+      { title: "Contact — Steve" },
+      { name: "description", content: "Envie d'avancer sur un site web ou un agent IA ? Contactez Steve directement." },
+      { property: "og:title", content: "Contact — Steve" },
+      { property: "og:description", content: "Envie d'avancer sur un site web ou un agent IA ? Contactez Steve directement." },
     ],
   }),
-  component: Book,
+  component: Contact,
 });
 
-const perks = [
-  "30 minutes, sans engagement",
-  "On cadre votre projet ensemble",
-  "Vous repartez avec une prochaine étape claire",
-  "Appel visio — Google Meet",
+const channels = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "steve@example.com",
+    href: "mailto:steve@example.com",
+    desc: "Pour un projet, une question ou juste dire bonjour.",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "Envoyer un message",
+    href: "https://wa.me/",
+    desc: "Réponse rapide en message direct.",
+  },
 ];
 
-function Book() {
+const socials = [
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+  { icon: Github, label: "Github", href: "https://github.com" },
+];
+
+function Contact() {
   return (
     <PageShell
-      eyebrow="ON EN PARLE"
-      title="Réserver un appel"
-      intro="Choisissez un créneau qui vous arrange. Je confirme sous quelques heures."
+      eyebrow="ON DISCUTE"
+      title="Contact"
+      intro="Vous avez un projet, une idée ou une question ? Choisissez le canal qui vous convient."
     >
-      <div className="grid gap-6 sm:grid-cols-[1fr_1.2fr]">
-        <div className="space-y-3">
-          {perks.map((p, i) => (
-            <motion.div
-              key={p}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.06 * i }}
-              className="flex items-start gap-3 rounded-xl border border-border bg-card p-3"
+      <div className="grid gap-4 sm:grid-cols-2">
+        {channels.map((c, i) => (
+          <motion.a
+            key={c.label}
+            href={c.href}
+            target={c.href.startsWith("http") ? "_blank" : undefined}
+            rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 * i, duration: 0.5 }}
+            whileHover={{ y: -4, borderColor: "hsl(var(--primary) / 0.5)" }}
+            className="group flex flex-col rounded-2xl border border-border bg-card p-5 transition-colors"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                <c.icon className="h-5 w-5" strokeWidth={2} />
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+            </div>
+            <div className="mt-4">
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                {c.label}
+              </p>
+              <p className="mt-1 text-lg font-bold text-foreground">{c.value}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+            </div>
+          </motion.a>
+        ))}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="mt-12 rounded-2xl border border-border bg-card p-6 text-center"
+      >
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          Ou suivez-moi
+        </p>
+        <div className="mt-4 inline-flex flex-wrap items-center justify-center gap-2">
+          {socials.map((s, i) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 + i * 0.05, type: "spring", stiffness: 260, damping: 20 }}
+              whileHover={{ scale: 1.1, rotate: -4 }}
+              whileTap={{ scale: 0.9 }}
+              className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
             >
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <p className="text-xs text-foreground/90">{p}</p>
-            </motion.div>
+              <s.icon className="h-5 w-5" />
+            </motion.a>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="rounded-2xl border border-border bg-card p-6"
-        >
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
-              <Video className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-sm font-bold">Appel découverte</p>
-              <p className="text-xs text-muted-foreground">Gratuit · 30 min</p>
-            </div>
-          </div>
-
-          <div className="mt-6 space-y-2">
-            {["Mar. 21 juil. · 10:00", "Mer. 22 juil. · 14:00", "Jeu. 23 juil. · 16:30", "Ven. 24 juil. · 11:00"].map((s, i) => (
-              <motion.button
-                key={s}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + i * 0.05 }}
-                className="flex w-full items-center justify-between rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary/5"
-              >
-                <span className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-primary" />
-                  {s}
-                </span>
-                <Clock className="h-4 w-4 text-muted-foreground" />
-              </motion.button>
-            ))}
-          </div>
-
-          <a
-            href="mailto:steve@example.com"
-            className="mt-6 block w-full rounded-full bg-primary py-3 text-center text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
-          >
-            Ou écrivez-moi directement →
-          </a>
-        </motion.div>
-      </div>
+      </motion.div>
     </PageShell>
   );
 }
