@@ -28,7 +28,7 @@ const tools = [
   { icon: Rocket, name: "Next.js" },
   { icon: Database, name: "Supabase" },
   { icon: Bot, name: "Google AI Studio" },
-  { icon: Code, name: "Claude Code" },
+  { icon: Code2, name: "Claude Code" },
 ];
 
 const contacts = [
