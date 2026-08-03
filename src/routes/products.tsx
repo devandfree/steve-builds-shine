@@ -31,6 +31,27 @@ const offers = [
     title: "Un produit pour accélérer votre business",
     desc: "Vous avez une idée ? On la transforme en solution concrète.",
   },
+const steps = [
+  {
+    icon: MessageSquare,
+    title: "1. On échange",
+    desc: "On prend 15 min pour comprendre votre besoin, vos objectifs et vos contraintes.",
+  },
+  {
+    icon: FileText,
+    title: "2. Scope & devis",
+    desc: "Je vous propose un scope clair, un planning réaliste et un budget transparent.",
+  },
+  {
+    icon: Hammer,
+    title: "3. Je construis",
+    desc: "Développement itératif avec des points réguliers pour ajuster en cours de route.",
+  },
+  {
+    icon: Rocket,
+    title: "4. Livraison",
+    desc: "Mise en ligne, tests finaux et un mois de support pour peaufiner les détails.",
+  },
 ];
 
 function Products() {
