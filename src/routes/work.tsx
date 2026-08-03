@@ -17,6 +17,13 @@ export const Route = createFileRoute("/work")({
 
 const projects = [
   {
+    name: "Aoline",
+    tag: "WEB",
+    year: "2025",
+    desc: "Landing page avec formulaire de contact.",
+    href: "https://aoline-consulting.vercel.app/",
+  },
+  {
     name: "Ecoland",
     tag: "WEB",
     year: "2025",
