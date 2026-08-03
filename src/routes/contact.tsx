@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Mail, MessageCircle, Instagram, Twitter, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MessageCircle, Instagram, Twitter, Linkedin, Github, ArrowUpRight, Plus, Minus, HelpCircle } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/contact")({
