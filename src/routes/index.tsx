@@ -50,7 +50,7 @@ function PillButton({
 }: {
   icon: typeof Play;
   label: string;
-  to: "/work" | "/products" | "/book";
+  to: "/work" | "/products" | "/contact";
 }) {
   return (
     <MotionLink
@@ -78,7 +78,7 @@ function Portfolio() {
           <div className="hidden sm:block">
             <PillButton icon={ShoppingBag} label="Ce que je Build" to="/products" />
           </div>
-          <PillButton icon={CheckCircle2} label="Réserver un appel" to="/book" />
+          <PillButton icon={CheckCircle2} label="Contact" to="/contact" />
         </nav>
 
         {/* Hero */}

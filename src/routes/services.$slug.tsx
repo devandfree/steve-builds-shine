@@ -107,10 +107,10 @@ function ServiceDetail() {
           <p className="mt-4 text-xs font-bold uppercase tracking-widest text-muted-foreground">Tarif</p>
           <p className="mt-1 text-lg font-bold text-primary">{s.from}</p>
           <Link
-            to="/book"
+            to="/contact"
             className="mt-6 block w-full rounded-full bg-primary py-2.5 text-center text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
           >
-            Réserver un appel →
+            Me contacter →
           </Link>
         </motion.div>
       </div>
