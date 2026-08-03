@@ -75,10 +75,10 @@ function Products() {
           Discutons de votre idée et voyons comment la transformer en produit concret.
         </p>
         <Link
-          to="/book"
+          to="/contact"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
         >
-          Réserver un appel
+          Me contacter
           <Rocket className="h-4 w-4" strokeWidth={2} />
         </Link>
       </motion.div>

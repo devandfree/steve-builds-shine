@@ -70,10 +70,10 @@ function Work() {
       <div className="mt-12 rounded-2xl border border-border bg-card/50 p-6 text-center">
         <p className="text-sm text-muted-foreground">Envie de construire quelque chose ensemble ?</p>
         <Link
-          to="/book"
+          to="/contact"
           className="mt-3 inline-block rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
         >
-          Réserver un appel →
+          Me contacter →
         </Link>
       </div>
     </PageShell>
