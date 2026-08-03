@@ -28,7 +28,6 @@ const tools = [
   { icon: Rocket, name: "Next.js" },
   { icon: Database, name: "Supabase" },
   { icon: Bot, name: "OpenAI" },
-  { icon: Zap, name: "n8n" },
   { icon: Sparkles, name: "Claude" },
 ];
 
@@ -91,7 +90,7 @@ function Portfolio() {
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
-              Product Builder<br />Web & IA
+              Product Builder<br />Sites web & Agents IA
             </h2>
           </motion.div>
 
@@ -111,7 +110,6 @@ function Portfolio() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
-              <p className="text-[10px] font-semibold tracking-[0.4em] text-primary">STEVE</p>
               <h1 className="-mt-1 text-6xl font-black tracking-tighter sm:text-7xl">
                 <span className="text-foreground">st</span>
                 <span className="text-foreground/40">eve</span>
