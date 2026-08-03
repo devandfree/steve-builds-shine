@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Bot, Rocket, Calendar } from "lucide-react";
+import { Globe, Bot, Rocket, Calendar, MessageSquare, FileText, Hammer } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/products")({
@@ -33,6 +33,29 @@ const offers = [
   },
 ];
 
+const steps = [
+  {
+    icon: MessageSquare,
+    title: "1. On échange",
+    desc: "On prend 15 min pour comprendre votre besoin, vos objectifs et vos contraintes.",
+  },
+  {
+    icon: FileText,
+    title: "2. Scope & devis",
+    desc: "Je vous propose un scope clair, un planning réaliste et un budget transparent.",
+  },
+  {
+    icon: Hammer,
+    title: "3. Je construis",
+    desc: "Développement itératif avec des points réguliers pour ajuster en cours de route.",
+  },
+  {
+    icon: Rocket,
+    title: "4. Livraison",
+    desc: "Mise en ligne, tests finaux et un mois de support pour peaufiner les détails.",
+  },
+];
+
 function Products() {
   return (
     <PageShell eyebrow="OFFRES" title="Ce que je Build">
@@ -58,6 +81,38 @@ function Products() {
           </motion.div>
         ))}
       </div>
+
+      {/* Comment ça se passe */}
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        className="mt-16"
+      >
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          Process
+        </p>
+        <h2 className="mt-2 text-2xl font-bold text-foreground">Comment ça se passe</h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 * i, duration: 0.4 }}
+              className="rounded-2xl border border-border bg-card p-5"
+            >
+              <div className="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">
+                <step.icon className="h-5 w-5" strokeWidth={2} />
+              </div>
+              <h3 className="text-sm font-bold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
