@@ -40,6 +40,75 @@ const socials = [
   { icon: Github, label: "Github", href: "https://github.com" },
 ];
 
+const faqs = [
+  {
+    question: "Que puis-je vous demander exactement ?",
+    answer:
+      "Un site vitrine, une landing page, un site e-commerce, ou un agent IA qui automatise une tâche récurrente (réponses, qualification, RDV...).",
+  },
+  {
+    question: "Combien de temps prend un projet ?",
+    answer:
+      "Un site web simple prend généralement 1 à 2 semaines. Un agent IA plus complexe peut nécessiter 2 à 4 semaines selon les intégrations.",
+  },
+  {
+    question: "Quel est le budget indicatif ?",
+    answer:
+      "Chaque projet est sur mesure. Après un premier échange, je vous envoie une proposition claire avec les options et les délais.",
+  },
+  {
+    question: "Travaillez-vous avec des outils no-code ?",
+    answer:
+      "Non. Je privilégie une stack moderne (code) pour des performances, un SEO et une maintenabilité optimales.",
+  },
+  {
+    question: "Et après la livraison, ça fonctionne comment ?",
+    answer:
+      "Je vous accompagne pour la mise en ligne et je propose un petit mois de support pour ajuster les derniers détails.",
+  },
+];
+
+function FAQItem({
+  faq,
+  index,
+}: {
+  faq: { question: string; answer: string };
+  index: number;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.55 + index * 0.05, duration: 0.4 }}
+      className="overflow-hidden rounded-2xl border border-border bg-card"
+    >
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-secondary/50"
+        aria-expanded={open}
+      >
+        <span className="text-sm font-semibold text-foreground">{faq.question}</span>
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-secondary text-foreground transition-colors">
+          {open ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+        </span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 function Contact() {
   return (
     <PageShell
