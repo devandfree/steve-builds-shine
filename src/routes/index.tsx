@@ -33,11 +33,12 @@ const tools = [
 ];
 
 const contacts = [
-  { icon: Mail, label: "Email", href: "mailto:steve@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:@example.com" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
   { icon: MessageCircle, label: "Whatsapp", href: "https://wa.me/" },
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+  /*{ icon: Github, label: "Github", href: "https://github.com" },*/
 ];
 
 const MotionLink = motion(Link);
