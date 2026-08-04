@@ -24,12 +24,13 @@ export const Route = createFileRoute("/")({
 });
 
 const tools = [
-  { icon: Code2, name: "Lovable" },
-  { icon: Rocket, name: "Next.js" },
+  { icon: Bot, name: "Lovable" },
+  { icon: Code2, name: "React JS" },
   { icon: Database, name: "Supabase" },
+  { icon: Code2, name: "TypeSctript JS" },
   { icon: Database, name: "Firebase" },
   { icon: Bot, name: "Google AI Studio" },
-  { icon: Code2, name: "Claude Code" },
+  { icon: Bot, name: "Claude" },
 ];
 
 const contacts = [
