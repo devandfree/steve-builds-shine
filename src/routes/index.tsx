@@ -75,10 +75,10 @@ function Portfolio() {
         {/* Nav */}
         <nav className="grid grid-cols-2 items-center gap-3 sm:flex sm:justify-between">
           <PillButton icon={Play} label="Mes projets" to="/work" />
+          <PillButton icon={ShoppingBag} label="Ce que je Build" to="/products" />
           <div className="hidden sm:block">
-            <PillButton icon={ShoppingBag} label="Ce que je Build" to="/products" />
+            <PillButton icon={CheckCircle2} label="Contact" to="/contact" />
           </div>
-          <PillButton icon={CheckCircle2} label="Contact" to="/contact" />
         </nav>
 
         {/* Hero */}
