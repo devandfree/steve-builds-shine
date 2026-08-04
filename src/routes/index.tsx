@@ -38,7 +38,6 @@ const contacts = [
   { icon: MessageCircle, label: "Whatsapp", href: "https://wa.me/" },
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Github, label: "Github", href: "https://github.com" },
 ];
 
 const MotionLink = motion(Link);
