@@ -6,9 +6,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Ce que je Build — Steve" },
+      { title: "Services — Steve" },
       { name: "description", content: "Sites web, agents IA et produits digitaux conçus pour accélérer votre business." },
-      { property: "og:title", content: "Ce que je Build — Steve" },
+      { property: "og:title", content: "Services — Steve" },
       { property: "og:description", content: "Sites web, agents IA et produits digitaux conçus pour accélérer votre business." },
     ],
   }),
@@ -58,7 +58,7 @@ const steps = [
 
 function Products() {
   return (
-    <PageShell eyebrow="OFFRES" title="Ce que je Build">
+    <PageShell eyebrow="OFFRES" title="Services">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {offers.map((offer, i) => (
           <motion.div
