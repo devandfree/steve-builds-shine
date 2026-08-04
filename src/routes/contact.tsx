@@ -64,7 +64,7 @@ const faqs = [
   {
     question: "Et après la livraison, ça fonctionne comment ?",
     answer:
-      "Je vous accompagne pour la mise en ligne et je propose un petit mois de support pour ajuster les derniers détails.",
+      "Je vous accompagne pour la mise en ligne et je vous offre un mois de support gratuit pour ajuster les derniers détails.",
   },
 ];
 
