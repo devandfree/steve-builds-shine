@@ -88,7 +88,7 @@ function LazyAvatar({
 
   return (
     <div
-      className="relative"
+      className={`relative ${className ?? ""}`}
       style={{ aspectRatio: aspectRatio.toString() }}
       aria-busy={!loaded}
     >
@@ -117,7 +117,7 @@ function LazyAvatar({
           opacity: { duration: 0.6, ease: "easeOut" },
           y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
         }}
-        className={`relative z-10 h-auto w-full object-contain ${className ?? ""}`}
+        className="relative z-10 h-auto w-full object-contain"
       />
     </div>
   );
