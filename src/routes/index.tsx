@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Play,
   ShoppingBag,
@@ -17,7 +18,7 @@ import {
   Zap,
   Rocket,
 } from "lucide-react";
-import steveAvatar from "@/assets/steve-avatar.png.asset.json";
+import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
