@@ -156,14 +156,12 @@ function Portfolio() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative order-1 mx-auto sm:order-2"
           >
-            <motion.img
+            <LazyAvatar
               src={steveAvatar.url}
               alt="Steve, Product Builder"
-              width={420}
-              height={520}
-              className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              width={777}
+              height={980}
+              className="w-[280px] sm:w-[380px]"
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
               <h1 className="-mt-1 text-6xl font-black tracking-tighter sm:text-7xl">
