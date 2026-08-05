@@ -17,7 +17,7 @@ import {
   Zap,
   Rocket,
 } from "lucide-react";
-
+import steveAvatar from "@/assets/steve-avatar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
