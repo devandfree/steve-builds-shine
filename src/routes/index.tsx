@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Play,
   ShoppingBag,
@@ -17,7 +18,7 @@ import {
   Zap,
   Rocket,
 } from "lucide-react";
-import steveAvatar from "@/assets/steve-avatar.png.asset.json";
+import steveAvatar from "@/assets/steve-avatar.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -69,6 +70,59 @@ function PillButton({
   );
 }
 
+function LazyAvatar({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const aspectRatio = width / height;
+
+  return (
+    <div
+      className={`relative ${className ?? ""}`}
+      style={{ aspectRatio: aspectRatio.toString() }}
+      aria-busy={!loaded}
+    >
+      {!loaded && (
+        <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl bg-muted/20">
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 blur-xl" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xs font-medium text-muted-foreground/50">Steve</span>
+          </div>
+        </div>
+      )}
+      <motion.img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: loaded ? 1 : 0,
+          y: [0, -8, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.6, ease: "easeOut" },
+          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+        }}
+        className="relative z-10 h-auto w-full object-contain"
+      />
+    </div>
+  );
+}
+
 function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -102,14 +156,12 @@ function Portfolio() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative order-1 mx-auto sm:order-2"
           >
-            <motion.img
+            <LazyAvatar
               src={steveAvatar.url}
               alt="Steve, Product Builder"
-              width={420}
-              height={520}
-              className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              width={777}
+              height={980}
+              className="w-[280px] sm:w-[380px]"
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
               <h1 className="-mt-1 text-6xl font-black tracking-tighter sm:text-7xl">
