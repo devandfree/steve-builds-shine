@@ -70,6 +70,59 @@ function PillButton({
   );
 }
 
+function LazyAvatar({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const aspectRatio = width / height;
+
+  return (
+    <div
+      className="relative"
+      style={{ aspectRatio: aspectRatio.toString() }}
+      aria-busy={!loaded}
+    >
+      {!loaded && (
+        <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl bg-muted/20">
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 blur-xl" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xs font-medium text-muted-foreground/50">Steve</span>
+          </div>
+        </div>
+      )}
+      <motion.img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: loaded ? 1 : 0,
+          y: [0, -8, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.6, ease: "easeOut" },
+          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+        }}
+        className={`relative z-10 h-auto w-full object-contain ${className ?? ""}`}
+      />
+    </div>
+  );
+}
+
 function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
