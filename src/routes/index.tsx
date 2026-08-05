@@ -83,27 +83,47 @@ function Portfolio() {
         </nav>
 
         {/* Hero */}
-        <section className="relative mt-12 grid gap-10 sm:mt-20 sm:grid-cols-2 sm:items-center">
+        <section className="relative mt-10 grid gap-8 sm:mt-16 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-2 sm:order-1"
           >
             <div className="mb-4 h-px w-16 bg-primary" />
-            <h1 className="text-4xl font-black leading-tight tracking-tighter sm:text-5xl">
-              <span className="text-foreground">st</span>
-              <span className="text-foreground/40">eve</span>
-            </h1>
-            <h2 className="mt-3 text-xl font-semibold leading-tight sm:text-2xl">
+            <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
               Product Builder<br />Sites web & Agents IA
             </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative order-1 mx-auto sm:order-2"
+          >
+            <motion.img
+              src={steveAvatar.url}
+              alt="Steve, Product Builder"
+              width={420}
+              height={520}
+              className="relative z-10 h-auto w-[280px] object-contain sm:w-[380px]"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 text-center">
+              <h1 className="-mt-1 text-6xl font-black tracking-tighter sm:text-7xl">
+                <span className="text-foreground">st</span>
+                <span className="text-foreground/40">eve</span>
+              </h1>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm leading-relaxed text-muted-foreground sm:text-right"
+            className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
           >
             <p>
               Salut, moi c&apos;est Steve. Je conçois des sites web et des agents
