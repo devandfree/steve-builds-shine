@@ -115,15 +115,9 @@ function LazyAvatar({
         decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => setLoaded(true)}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: loaded ? 1 : 0,
-          y: [0, -8, 0],
-        }}
-        transition={{
-          opacity: { duration: 0.6, ease: "easeOut" },
-          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        }}
+        animate={{ y: [0, -8, 0] }}
+        transition={{ y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
+        style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease-out" }}
         className="relative z-10 h-auto w-full object-contain"
       />
     </div>
