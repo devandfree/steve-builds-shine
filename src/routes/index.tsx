@@ -84,7 +84,12 @@ function LazyAvatar({
   className?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const aspectRatio = width / height;
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, [src]);
 
   return (
     <div
