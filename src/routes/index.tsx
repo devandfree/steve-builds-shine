@@ -29,7 +29,7 @@ const tools = [
   { icon: Code2, name: "React JS" },
   { icon: Database, name: "Supabase" },
   { icon: Bot, name: "Google AI Studio" },
-  { icon: Code2, name: "TypeSctript JS" },
+  { icon: Code2, name: "TypeScript" },
   { icon: Database, name: "Firebase" },
   { icon: Bot, name: "Claude" },
 ];
@@ -143,7 +143,7 @@ function Portfolio() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-2 sm:order-1"
+            className="order-2 text-center sm:order-1 sm:text-left"
           >
             <div className="mb-4 h-px w-16 bg-primary" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
@@ -176,7 +176,7 @@ function Portfolio() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-3 text-sm leading-relaxed text-muted-foreground sm:text-right"
+            className="order-3 text-center text-sm leading-relaxed text-muted-foreground sm:text-right"
           >
             <p>
               Salut, moi c&apos;est Steve. Je conçois des sites web et des agents
