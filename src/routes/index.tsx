@@ -145,7 +145,7 @@ function Portfolio() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="order-2 text-center sm:order-1 sm:text-left"
           >
-            <div className="mb-4 h-px w-16 bg-primary" />
+            <div className="mx-auto mb-4 h-px w-16 bg-primary sm:mx-0" />
             <h2 className="text-xl font-semibold leading-tight sm:text-2xl">
               Product Builder<br />Sites web & Agents IA
             </h2>
