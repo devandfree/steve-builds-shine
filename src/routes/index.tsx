@@ -106,13 +106,15 @@ function LazyAvatar({
         </div>
       )}
       <motion.img
+        ref={imgRef}
         src={src}
         alt={alt}
         width={width}
         height={height}
-        loading="lazy"
+        loading="eager"
         decoding="async"
         onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
         initial={{ opacity: 0 }}
         animate={{
           opacity: loaded ? 1 : 0,
