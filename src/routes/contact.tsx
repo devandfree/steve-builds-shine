@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MessageCircle, Instagram, Twitter, Linkedin, Github, ArrowUpRight, Plus, Minus, HelpCircle } from "lucide-react";
+import { Mail, MessageCircle, Instagram, Twitter, Linkedin, Github, TikTok, ArrowUpRight, Plus, Minus, HelpCircle } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/contact")({
@@ -35,6 +35,7 @@ const channels = [
 
 const socials = [
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: TikTok, label: "TikTok", href: "https://tiktok.com" },
   { icon: Twitter, label: "X/Twitter", href: "https://x.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Github, label: "Github", href: "https://github.com" },
